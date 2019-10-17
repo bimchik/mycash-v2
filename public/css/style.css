@@ -1,0 +1,38 @@
+/* Your custom styles */
+.side-nav .logo-sn {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.side-nav a {
+    color: green;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 86px;
+    line-height: 86px;
+}
+.white-skin .side-nav {
+    background-color: #fff;
+}
+.info-top {
+    #padding: 20px;
+    #border: 1px solid #000;
+    #border-radius: 10px;
+}
+fieldset {
+    border:1px groove #ddd;
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+legend {
+    width:auto; /* Or auto */
+    padding:0 20px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+.card-header-title {
+    font-weight: bold;
+    color: #fff;
+}
+.ballance-sum, .last-month-ball {
+    font-weight: bold;
+    font-size: 30px;
+}
