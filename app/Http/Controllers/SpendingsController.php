@@ -15,19 +15,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use App\Repositories\Interfaces\SpendingsInterface;
 
 class SpendingsController extends Controller
 {
     private $acc_id;
+    private $spendingsInterface;
 
-    public function __construct()
+    public function __construct(SpendingsInterface $spendingsInterface)
     {
-        $this->middleware(function ($request, $next) {
-            $this->acc_id = Auth::user()->account->id;
-
-            return $next($request);
-        });
-
+        $this->spendingsInterface = $spendingsInterface;
     }
 
     public function index()
