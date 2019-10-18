@@ -7,5 +7,5 @@ use App\Account;
 
 interface BallanceTypeInterface
 {
-    public function getBallanceTypeArrByAccount(Account $account);
+    public function getBallanceTypesArrByAccount(Account $account);
 }

@@ -39,7 +39,7 @@ class SpendingsController extends Controller
 
         $cats = Category::where('section','spendings')->where('account_id',$this->acc_id)->orWhere('account_id',null)->get()->toArray();
 
-        $ballance_types = $this->spendingsInterface->getBallanceTypeArrByAccount($this->account);
+        $ballance_types = $this->spendingsInterface->getBallanceTypesArrByAccount($this->account);
 
         return view('spendings.add',compact('cats','ballance_types'));
     }
