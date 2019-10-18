@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Interfaces\BallanceTypeInterface;
 use Auth;
 use App\Category;
 use App\Spending;
@@ -22,10 +23,12 @@ class SpendingsController extends Controller
     private $acc_id;
     private $account;
     private $spendingsInterface;
+    private $ballTypeInterface;
 
-    public function __construct(SpendingsInterface $spendingsInterface)
+    public function __construct(SpendingsInterface $spendingsInterface, BallanceTypeInterface $ballTypeInterface)
     {
         $this->spendingsInterface = $spendingsInterface;
+        $this->ballTypeInterface = $ballTypeInterface;
 
         $this->middleware(function ($request, $next) {
             $this->account = Auth::user()->account;
@@ -38,8 +41,9 @@ class SpendingsController extends Controller
     {
 
         $cats = Category::where('section','spendings')->where('account_id',$this->acc_id)->orWhere('account_id',null)->get()->toArray();
+        //dd($this->spendingsInterface);
 
-        $ballance_types = $this->spendingsInterface->getBallanceTypesArrByAccount($this->account);
+        $ballance_types = $this->ballTypeInterface->getBallanceTypesArrByAccount($this->account);
 
         return view('spendings.add',compact('cats','ballance_types'));
     }

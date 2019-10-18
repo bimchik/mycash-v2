@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Repositories\Interfaces\BallanceTypeInterface;
+use App\BallanceType;
 
 class BallanceTypeRepository implements BallanceTypeInterface
 {
