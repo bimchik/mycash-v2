@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/category/add/{section}', 'CategoriesController@index')->name('categories.form');
     Route::post('/category/add/cat', ['uses' => 'CategoriesController@store'])->name('categories.add');
 
-    Route::get('/incomings/add/{?id}',['uses'=>'IncomingsController@index']);
+    Route::get('/incomings/add','IncomingsController@index');
     Route::post('/incomings/store','IncomingsController@store')->name('incomings.add');
 
     Route::get('/category/incomings/{slug}',['uses'=>'IncomingsController@list'])->name('incomings.list');
