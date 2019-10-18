@@ -1,14 +1,13 @@
 <?php
 namespace App\Repositories;
 
-use App\Account;
 use App\Spending;
 use App\Repositories\Interfaces\SpendingsInterface;
 
 class SpendingsRepository implements SpendingsInterface
 {
-    public function allByAccount(Account $acc)
+    public function allByAccount($account)
     {
-        return Spending::where('account_id',$acc->id)->get();
+        return Spending::where('account_id',$account->id)->get();
     }
 }

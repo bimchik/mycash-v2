@@ -3,6 +3,6 @@ namespace App\Repositories\Interfaces;
 
 interface SpendingsInterface {
 
-    public function allByAccount($acc);
+    public function allByAccount($account);
 
 }
