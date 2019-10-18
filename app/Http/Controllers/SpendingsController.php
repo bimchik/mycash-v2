@@ -20,11 +20,18 @@ use App\Repositories\Interfaces\SpendingsInterface;
 class SpendingsController extends Controller
 {
     private $acc_id;
+    private $account;
     private $spendingsInterface;
 
     public function __construct(SpendingsInterface $spendingsInterface)
     {
         $this->spendingsInterface = $spendingsInterface;
+
+        $this->middleware(function ($request, $next) {
+            $this->account = Auth::user()->account;
+
+            return $next($request);
+        });
     }
 
     public function index()
