@@ -11,17 +11,24 @@ use Illuminate\Http\Request;
 class BallanceTypesController extends Controller
 {
     private $acc_id;
+    private $account;
+    private $ballTypeInterface;
 
-    public function __construct()
+    public function __construct(BallanceTypeInterface $ballTypeInterface)
     {
-        $this->acc_id = auth()->user()->account->id;
+        $this->ballTypeInterface = $ballTypeInterface;
+        $this->middleware(function ($request, $next) {
+            $this->account = Auth::user()->account;
+
+            return $next($request);
+        });
     }
 
     public function index()
     {
-        $ballance_types = BallanceType::where('account_id',$this->acc_id)->with('shareContacts.user','shareContacts')->get();
+        $ballance_types = $this->ballTypeInterface->getBallanceTypesWithContacts($this->account);
 
-        $contacts = auth()->user()->account->contacts();
+        $contacts = $this->account->contacts();
 
         return view('settings.ballance.types',compact('ballance_types','contacts'));
     }

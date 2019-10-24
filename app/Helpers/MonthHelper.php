@@ -5,7 +5,7 @@ namespace App\Helpers;
 use Carbon\Carbon;
 
 
-trait MonthHelper
+class MonthHelper
 {
     public $currMonth;
     public $currYear;

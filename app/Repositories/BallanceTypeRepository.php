@@ -10,4 +10,10 @@ class BallanceTypeRepository implements BallanceTypeInterface
     {
         return BallanceType::where('account_id',$account->id)->get()->toArray();
     }
+
+    public function getBallanceTypesWithContacts($account)
+    {
+        return BallanceType::where('account_id',$account->id)->with('shareContacts.user','shareContacts')->get();
+    }
+
 }
